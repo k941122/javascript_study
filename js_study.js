@@ -606,3 +606,188 @@ if(price04 > 2000) { // 선언된 price04의 값이 해당 괄호안의 조건�
 }
 
 
+
+/**논리연산자 ||(or) , &&(and) , !(not)
+ * 
+ * || (or) = 여러개중 하나라도 true면 true,
+ * 모든값이 false 일때만 false를 반환
+ * 
+ * &&(and) = 모든값이 true면 true,
+ * 하나라도 false면 false.
+ * 
+ * ! (not) = true와 false를 반대값으로 바꿔줌
+ * true면 false, false면 true.
+ * 
+ * or => 케이트 윈슬렛은 미국인 이거나(or), 남자이다. => true! , 이거나 는 or임으로 두 조건중 하나만 맞아도 true이다.
+ * and => 케이트 윈슬렛은 미국인 이고(and), 남자이다. => false , 이고 는 and임으로, 모든 조건이 맞아야 true가 나온다. 그러므로 false이다.
+ * 
+ * ※ or and 알아두어야 할점!
+ * 
+ * 평가)
+ * Or은 첫번째 true를 발견하는 즉시 평가를 멈춤!
+ * 케이트 윈슬렛은 여자이거나(or), 한국인 이거나, 인형 이거나...
+ * 위 코드에서 true인 여자이거나 에서 평가를 멈춤
+ *  
+ * And는 첫번째 false를 발견하는 죽시 평가를 멈춤
+ * 케이트 윈슬렛은 여자이고(and), 한국인 이며, 인형인 동시에....
+ * 위 코드에서 한국인 이며 라는 false에서 평가를 멈춘다.
+ * 
+ * tip! (복잡한 코드를 작성 전에 논리연산자 부분이 단순하다면 단순화 시키는 것이 좋다.)
+ * 
+ * 
+ * ex) 엑셀 자격증이 있고 토익이 800점 이상인 청각장애인 지원자.
+ * 
+ * 위 문장에서 엑셀자격증은 전체 지원자의 90%, 토익이 800점 이상인 지원자는 70%, 청각장애인 지원자는 전체 지원자의 3%
+ * 라는 비율이 나왔을때 전체 지원자 대비 비율이 적은 순으로 수정해 주는게 좋다.
+ * → 청각장애를 가진 토익이 800점 이상이고 엑셀자격증이 있는 지원자.
+ * 순으로 바꾼다면 1번째 조건인 청각장애를 가진 지원자는 전체 지원자의 3%임으로 97%에 달하는 지원자를 거를수 있다.
+ * 그러므로 사용되는 시간과 데이터 양을 더 효율적으로 사용할수 있다.
+ * 
+ */
+
+
+/**논리 연산자 사용법!
+ * 
+ * ||(OR) => a||b => a와 b중 true가 있으면 true입니다.
+ * &&(and) => a&&b => a와b 둘다 true이면 true 입니다.
+ * !(not) => !a => a가 false이면 true, true이면 false! , a 제일 앞에 !를 붙이면 된다.
+ */
+
+//▼OR 예제 문제!
+//제품명이 lotion 이거나, 가격이 2000원 이상이면 통과!
+
+const cosmatic = "tonner";
+const price2= 2000;
+
+if(cosmatic === "lotion" || price2 >= 2000) {
+    console.log('구매');
+}
+
+//위 if문에서 괄호안에 조건식이 consmatic의 값이 tonner 라서 틀리지만 price2이 값이 2000원 보다 크거나 같아서 "구매" 라는 문구가 출력된다.
+//위 문제에서 조건이 ltotion 이거나(or) 이기 때문에 두 조건중 하나만 일치해도 true이기 때문에 값이 출력된다.
+
+
+//▼and 예제 문제!
+//제품명이 tonner 이고, 가격이 2000원 이상이면 통과!
+
+const cosmatic2 = tonner;
+const price3 = 2000;
+
+if (consomatic2 === "tonner" && price3 >= 2000) {
+    console.log('구매');
+} else {
+    console.log("별로!")
+}
+
+/**
+ * 위 and 예제 문제에서 if문 조건 부분에서 cosmatic2와 tonner가 일치하고 price3 역시 2000원 보다 크거나 같기 때문에 console창에 "구매 라고 뜬다."s
+ */
+
+//▼and 논리 연산자에서 조건중 하나라도 틀리는 경우의 예제문제!
+
+const comatic3 = "tonner";
+const price4 = 1500;
+
+if (cosmatic3 === "tonner" && price4 >= 2000) {
+    console.log("구매");
+}else {
+    console.log("별로");
+}
+
+/**
+ * if문에서 조건을 봤을때 cosmatic3는 tonner가 값임으로 "tonner와 일치하지만", price4는 2000보다 작은 1500이라는 값을 가졌음으로 false값을 출력한다.
+ * console창에는 "별로" 라는 문구가 출력된다.
+ */
+
+
+//not에 대한 예제 
+//가격을 입력한후 3000원 이상이 아니면 행사대상이 아님...
+
+const price5 = prompt('구매하신 가격을 입력해 주세요.');
+const isPrice = price5 >= 3000;
+
+if (!isPrice) {
+    console.log("행사대상이 아닙니다.")
+}
+
+/**
+ * price5 의 prompt창에 1500을 입력하면 isPrice의 값인 price5 >=3000 으로 계산되어 
+ * 아래 if문에 !isPrice = (isPrice 값이 아닌것 , not) 조건문에 따라 true임으로 "행사 대상이 아닙니다."라고 출력된다.
+ * 
+ * 만약 price5 의 prompt 창에 3000이나 3000이상의 값을 입력하게 되면 if문 !isPrice 값이 false로 나와 console창에 아무것도 출력되지 않는다.
+ */
+
+//논리연산자의 우선순위!
+//and 가 or보다 처리 순위가 높다!!
+
+//마그네슘 이고, 제품명이 nature 이거나 나이제한이 성인에 속해있으면 구매!
+
+const category = "비타민";
+const product_name = "Alive";
+const isAdult = true;
+
+if (categoty === "마그네슘" && product_name === "nature" || isAdult) {
+    console.log("구매하기!");
+}else {
+    console.log("돌아가기...");
+}
+
+/**
+ * 위 코드는를 실행하면 "구매하기!"라고 나온다.
+ * 왜냐하면,  categoty === "마그네슘" && product_name === "nature" 이부분의 코드는 and(&&)연산자 임으로 먼저 계산됨
+ * 그다음에는, || isAdult or(||)연산자가 처리됨으로 최종적으로 계산된 조건식은 isAdult는 true라는 값을 가졌음으로 "구매하기!"
+ * 라고 나오게 된다.
+ * 
+ * 즉 위 if문 조건식은 
+ * 
+ * if ((categoty === "마그네슘" && product_name === "nature") || isAdult)
+ * 
+ * 위 조건식과 같다는 것이다. 괄호안의 and(&&) 조건식이 먼저 계산되고 최종적으로 or (||) 가 마지막으로 계산 됨으로 true값이 나올수 밖에 없다.
+ * 
+ * 
+ */
+
+/**
+ * 만약 우리가 의도한 대로 결과값이 나오게 하고 싶다면?
+ * 
+ * if (category === "마그네슘" && (product_name ==="nature || isAult))
+ * 
+ * if 조건문의 조건식을 위와같은 형태로 적어야 한다. 
+ * 
+ * 그래야 논리연산자의 우선순위 앞에 있는 and(&&) 보다 or(||)이 or논리연산자를 감싸고 있는 괄호를 통해 우선순위를 얻게 되고 그 두가지 조건에서 false true여부를 결정한후 and(&&) 논리 연산자로 넘어가게 된다.
+ */
+
+const category2 = "비타민";
+const product_name2 = "Alive";
+const isAdult2 = true;
+
+if (categoty2 === "마그네슘" && (product_name2 === "nature" || isAdult2)) {
+    console.log("구매하기!");
+}else {
+    console.log("돌아가기...");
+}
+
+/**
+ * 위의 수정된 변수 선언문과 if문의 조건문을 이용한다면 console창의 값은 "구매하기"가 출력된다.
+ * 
+ * 왜냐하면 if문 괄호안의 조건문에서 or(||)연산자에 괄호가 쳐져 있음으로 둘중에 하나라도 일치하면 true이고 
+ * 그뒤로 and(&&)가 계산되며 앞의 조건과 모두 일치하는지를 계산하게 됨으로, 먼저 계산된 or(||)논리 연산자 부분은 true이고 and(&&)부분도 일치함으로 true 이다.
+ * 그럼으로 "구매하기!"라는 문구가 console창에 출력된다. 
+ */
+
+
+// 반복문 (loop)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
