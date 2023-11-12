@@ -1027,6 +1027,176 @@ for(let i =0; i < 10; i++) {
  */
 
 
+//▼ switch문 예제
+
+/**
+ * 겐조 : 100원
+ * 샤넬 : 200원
+ * 디올 : 300원
+ * 랑방 : 400원
+ * 조말론 : 500원
+ * 겔랑 : 600원
+ * 
+ * 구매하고 싶은 향수 물어보고,가격 알려주기!
+ */
+
+let perfum1 = prompt("어떤 향수를 원하시나요?")
+
+switch(perfum1) {
+    case "겐조" :
+        console.log("100원 입니다.");
+        break;
+    case "샤넬" : 
+        console.log("200원 입니다.");
+        break;
+    case "디올" :
+        console.log("300원 입니다.");
+        break;
+    case "랑방" :
+        console.log("400원입니다.");
+        break;
+    // case "조말론" :
+    //     console.log("500원입니다.");
+    //     break;
+    // case "겔랑" :
+    //     console.log("500원입니다.");
+
+    //▲ 위와 같이 중복되는 case 코드가 있을 경우?
+    case "조말론" :
+    case "겔랑" :
+        console.log("500원입니다.");
+    /**위와 같이 case "값":
+     *           case "값":
+     *           동일한 코드!
+     *            break;
+     * 
+     * 형식으로 입력해 주면 된다.!
+     */
+
+        break;
+    default : //만약 위의 조건들(case)와 일치하는 값이 없으면 "defualt :"를 쓰면 된다.
+        console.log("그런 향수는 없습니다.");
+}
+
+/**
+ * switch반복문 에서 case "값" : "실행할코드" 뒤에 break를 작성하지 않으면
+ * 지정된 값 아래의 모든 case 코드가 실행 되게 된다.
+ * 
+ * 위의 switch문 예제에서 break; 라는 코드가 없다라고 가정한다면!
+ * 
+ * perfum1에서 실행되는 prompt창에 랑방 이라고 입력하게 되면
+ * case "랑방" 아래의 case "조말론"  , case "겔랑" 의 코드들이 실행되게 된다.
+ * 
+ * 그러므로 switch 반복문 case 내부에 작동이 되면 멈춰주는 break;를 실행시켜 줘야한다.
+ */
+
+
+
+//함수(function)-----------------------------------------------
+
+/**
+ * 함수를 작성하는 이유는 중복되는 코드를 막기위해서 이다!!!!
+ * 
+ * 코드를 작성하다보면 여러 중복되는 코드를 관리해주거나 하나로 묶어서
+ * 작성할 필요가 있다. 그럴때 쓰는게 함수(function)이다.
+ */
+
+//함수의 기본 형식!!
+
+function sayHello(name) {
+    console.log(`안녕하세요.${name}님!`);
+}
+
+sayHello('수지');
+
+/**함수의 기본구조는 function(함수) sayHello(함수명) (name)(매개변수) {"실행시킬 코드"}중괄호
+ * 로 나눌수 있다.
+ * 
+ * (name)매개변수는 무언가가 들어갈수도 있고 아닐수도 있다. (name) 또는 ()
+ * 매개변수가 한개 이상이라면 ,으로 구별해준다. (a,b,c)
+ * 
+ * 위의 sayHello 함수는 함수 밖에 sayHello('수지'); 함수이름 + 괄호() 로 호출할수 있다.
+ */
+
+
+//▽매개변수가 있는 함수
+function infoEror() {
+    alert("입력하신 정보가 잘못되었습니다. 다시 확인해 주세요.");
+}
+
+infoEror();
+
+/**
+ * 함수의 장점은 infoEror내부에 작성된 alert창이
+ * 각기 다른 페이지의 로그인, 이벤트 등록, 제품구매 등 수십수백 가지의 페이지에서 사용될시
+ * 일일히 해당 페이지 코드창에 alert창 코드를 넣을 필요 없이 하나의 function 을 만들고 
+ * 해당함수의 함수명과 괄호 "infoEror()"하나 만으로 사용할수 있다는 것이다.
+ * 
+ * 또한 반복 재사용 되는 코드 (위의 infoEror의 alert창의 안내문구 같은..) 들을 손쉽게 수정할수 있다는 것이다.
+ * 즉 수십 수백개의 페이지에 동일한 메세지를 보여주기 위해 일일히 alert창을 넣고 후에 수정할때도 일일히 수십수백개의 페이지를
+ * 보며 몇백번 수정할 필요 없이 딱 infoEror 이라는 함수명을 가진 함수에 alert창 문구를 수정해 주면 되는 것이다!
+ */
+
+
+//▽매개변수가 있는 함수
+
+function welcome(name) {
+    const msg = `안녕하십니까.${name}고객님.`;
+    console.log(msg);
+}
+
+welcome('영웅재중');
+
+
+//▽만약 위 예제에서 로그인을 하지 않아서 (welcome()) 고객정보를 불러오지 못했다면?
+function welcome(name) {
+    let msg = `안녕하십니까.`; 
+    if(name) {
+        // msg = `안녕하십니까. ${name}고객님.`;
+        msg += `${name} 고객님`;
+    }
+    console.log(msg);
+}
+
+welcome();
+
+/**
+ * 위의 예제 코드는 고객 이름 정보 (name)이 없을시 어떻게 대응해야 하는가를 적은 코드이다.
+ * 
+ * 먼저 원래 const로 선언했던 변수 msg를 let로 바꿔 변경 가능하게 한뒤
+ * if문을 추가해 괄호안에 name을 넣어 name이 입력된다면 위의 msg변수의 값에
+ * name을 더한 부분을 출력해 준다.
+ * 
+ * 또한 msg += name를 백틱(``)으로 감싸줘서 msg += `${name} 고객님.` 이라고 수정해준다.
+ * 고객이름 정보가 업로드 된채로 welcome함수를 호출한다면 
+ * '안녕하십니까 ${name} 고객님.' 이라고 호출해 준다.
+ */
+
+
+
+//전역변수 지역변수!!!
+
+let msg = '안녕하십니까.' //(global varable) 전역변수!
+console.log("함수 호출전!");
+console.log(msg);
+
+function welcome(name) {
+    let msg = `안녕하십니까.`; //이 msg 변수는 내부 지역변수이다. 함수 내부에서만 사용가능.
+    if(name) {
+        msg += `${name} 고객님`;
+    }
+    console.log("함수내부")
+    //지역변수 (local varable)
+    console.log(msg);
+}
+
+console.log("함수 호출 후!");
+welcome();
+
+
+
+
+
 
 
 
