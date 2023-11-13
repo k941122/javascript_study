@@ -1193,6 +1193,127 @@ function welcome(name) {
 console.log("함수 호출 후!");
 welcome();
 
+//전역 변수 지역 변수 예제2번!
+
+let msg2 = "어서오세요."
+console.log(msg2);
+
+function sayWelcome (name) {
+    let msg = "환영합니다."
+    console.log(msg + ``+ name);
+}
+
+sayWelcome('원빈');
+console.log(msg);
+
+/**
+ * 위코드를 console창에 출력했을때 
+ * "어서오세요."
+ * "환영합니다. 원빈"
+ * "어서오세요."
+ * 
+ * 전역 변수 보다는 지역 변수위주로 할당해서 쓰는게 유리하다.
+ * 전역 변수는 적용하고자 하는 범위나 위치를 특정하기 어렵기 때문에 오류가 나기 쉽다.
+ * 지역 변수는 함수처럼 어떤 특정 범위 내에서만 적용되는 변수임으로 컨트롤 하고 관리하기가 쉽다!
+ */
+
+//OR 
+
+function sayUser(name) {
+    let newName = name || "고객";
+    let msg = `환영합니다. ${newName}님`
+    console.log(msg);
+}
+
+sayUser();
+sayUser("차은우");
+
+/**
+ * sayUser 함수서 매개변수로 name이 들어간다.
+ * sayUser 함수 내부 중괄호{} 안에 newName변수의 값은 name 또는 (or, ||) "고객" 이다.
+ * msg 변수의 값은 `환영합니다. ${name}님` 이다.
+ * 
+ * 만약 sayUser를 호출할때 인수에 값이 할당되지 않으면 name에 값이 없음으로 name은 flase가 되고 "고객"이라는 값이 newName 변수에 할당되게 된다.
+ * 그러므로 console창에는 환영합니다 고객님 이라는 구절이 호출된다.
+ * 
+ * sayUser의 인수에 "차은우" 라는 값이 할당되면 sayUser의 매개변수에 "차은우"라는 값이 할당된다.
+ * newName 변수의 값 name || "고객"에서 name에 값이 할당되 true가 되고 
+ * msg변수 ${newName}에 "차은우"라는 값이 할당 되서 
+ * console창에 환영합니다. 차은우님 이라는 문구가  출력된다.
+ */
+
+//default 값
+
+function sayUser(name = "고객") {
+    let msg = `환영합니다. ${name}님`
+    console.log(msg);
+}
+
+sayUser();
+sayUser("유인나");
+
+/**
+ * 함수 sayUser의 매개변수에 name = "고객"을 할당함으로써
+ * sayUser 함수 밖에서 sayUser함수를 호출했을때 인수에 값이 없으면 name에 "고객"을 할당하고
+ * sayUser 함수 호출시 인수값이 있으면 해당 인수값이 name에 할당되어 console창에 문구가 출력된다.
+ * 
+ */
+
+//return값으로 반환
+
+function toy(num1 , num2) {
+    return num1+num2;
+}
+
+let price6 = toy(200,400);
+console.log(price6);
+
+/**
+ * 위의 toy 함수에 중괄호 내부에 있는
+ *  return은 내부에 있는 식을 실행후 종료하고 호출한 곳으로 반환 한다는 것입니다.
+ * 
+ * 
+ * 위 return 값의 반환 예시 코드를 보면
+ * 
+ * toy함수 외부에 price6 변수의 값으로 toy 함수가 인수 200, 400과 함께 호출되고 있습니다.
+ * 이 호출된 toy함수의 매개변수 num1,num2에 인수 200,400이 들어가게 되고
+ * return에 있는 num1+num2로 넘어가 + 더해진뒤 
+ * 다시 호출된 let price6 변수로 넘어가게 됩니다. 
+ * console.log에서 price6를 호출하고 있음으로 console창에는 600이 출력 됩니다.
+ * 
+ */
+
+function showError() {
+    alert('애러가 발생했습니다.');
+}
+
+const result3 = showError();
+console.log(result3);
+
+/**
+ * 꼭 return 뒤에 써줘야 값이 호출된 곳으로 반환되는 것은 아니다.
+ * alert 같은 경우 return이 없더라도 호출된 result3로 undefined를 반환한다.
+ */
+
+
+/**함수(function) 주의사항!
+ * 
+ * 함수 하나는 한번에 한작업에 집중,
+ * 하나의 함수가 여러작업을 진행할 경우 기능을 잘개 나눠서 여러 함수를 작성하는게 좋다!
+ * 읽기쉽고 어떤 동작인지 알 수 있게 네이밍
+ * ▽예시!
+ * showError // 에러를 보여줌
+ * getName //이름을 얻어옴
+ * createUserData //유저데이터 생성
+ * 
+ */
+
+
+
+
+
+
+
 
 
 
