@@ -1309,10 +1309,213 @@ console.log(result3);
  */
 
 
+//함수표현식 화살표 함수!-----------------------------------
+
+/**
+ * 함수 선언문!
+ * 
+ * ▽함수 선언문 예제!
+ * 
+ * sayHello(); <-여기에서 sayHello함수 호출해도 호출가능!
+ * 
+ * function sayHello() {
+ *  console.log("안녕");
+ * }
+ * 
+ * 어디서든 호출이 가능하다.
+ * ex) 함수의 위, 아래 등등...
+ * 
+ * -> javascirpt는 한줄씩 위에서 아래로 읽으면서 내려가는 인터프리터 언어.
+ *    하지만 함수 선언문이 해당 함수 위에서 호출해도 부를수 있는 이유는 ?
+ *    -> javascript는 실행전 모든 함수 선언문을 수집한다.
+ *       그러므로 함수 선언문에서 선언된 함수가 적용될수 있는 범위가 
+ *       코드위치 보다 위로 올라가는 것이다. 
+ *    위와 같은 것을 호이스팅(hoisting) 이라고 부른다. 
+ */
+
+/**
+ * 함수 표현식!
+ * 
+ * ▽함수 표현식 예제!
+ * let sayHello = function() {
+ *  console.log('Hello');
+ * }
+ * 
+ * sayHello(); <- 함수 표현식일 경우 함수 아래에서 호출해야됨
+ * 
+ * 하나하나 아래로 읽어 나가는 js의 인터프리터 형식이 적용됨!
+ * 꼭! 함수의 아래에서 호출해줘야됨!!
+ */
 
 
+//화살표 함수(arrow funtion)
+
+let add = function(num1,num2) {
+    return num1+num2;
+}
+
+//위의 함수표현식 add를 화살표 함수로 바꾸기
+
+let add2 = (num1,num2) => ( num1 + num2)
+
+/**
+ * 함수표현식에서 쓰이는 function을 생략할수 잇고 중괄호{}를 괄호()로 바꿀수 있다.
+ * 또한 return을 생략할수 있으며 식이 한게일 경우 괄호 자체도 생략 가능하다.
+ * -> let add2 = (num1,num2) => num1 + num2;
+ */
+    
+
+//인수가 하나인 경우
+
+let hello = name = `안녕하세요. ${name}`;
+
+/**
+ * 인수가 하나인 경우 매개변수의 괄호를 지울수 있다.
+ */
+
+//매개변수가 없을 경우의 함수 표현식!
+
+let showError = () => {
+    alert('error');
+}
+
+/**매개변수가 하나도 없더라도 매개변수가 들어갈 괄호 () 생략은 할수 없다. */
+
+//return 전에 코드가 있을때!
+
+let add3 = (num1,num2) => {
+    const result = num1 + num2;
+    return result;
+}
+
+/**
+ * return 문 전에 코드가 있을 경우 일반 괄호()를 사용할수 없다.
+ * 그대로 중괄호{}를 이용해야 한다.
+ */
+
+//여러 함수 적용해보기!
+
+showHello ();
+
+let showHello = () => {
+    console.log('반갑습니다!')
+}
+
+/**
+ * 위이 함수는 함수 표현식으로 작성되어서 함수 위에서 함수를 호출시 인식할수 없다.
+ */
 
 
+//함수 선언문!!
+
+showHello ();
+
+function showHello () {
+    console.log('반갑습니다!')
+}
+
+/**
+ * 함수 선언문은 호이스팅으로 인해 함수 위아래로 호출할수 있다.!
+ */
+
+//화살표 함수!!!! 만들기!!!!
+
+const Hello = function (name) {
+    const msg = `Hello, ${name}`;
+    console.log(msg);
+};
+
+//위의 형식을
+
+const Hello2 = (name) => {
+    const msg = `Hello, ${name}`;
+    console.log(msg);
+};
+
+/**
+ * 아래의 형식으로 바꾸면 된다. 
+ * function을 빼고 매개변수 일반 괄호() 뒤에 "=>" 화살표 모양을 
+ * 넣어주면 된다!
+ */
+
+//화살표 함수 간단하게 하기!
+
+const plus = (num1 , num2) => {
+    const result = num1+num2;
+    return result;
+};
+
+//위의 함수를 간단하게 표현하고 싶다면
+
+const plus2 = (num1 , num2) => (num1+num2) 
+
+/**
+ * 결국에 const result의 값은 매개변수 num1 +num2의 값이고
+ * return 은 뒤에서 나온 식들을 계산하고 호출한곳에 되돌려 주는 것임으로
+ * 
+ * return뒤에 num1 + num2을 넣어주면 된다.
+ * 그리고 return은 삭제한 뒤 중괄호{}는 일반 괄호()로 바꿔준다. 
+ */
+
+/**
+ * 화살표 함수는 ES6 Javascript 이후로 자주 사용되고 있다!
+ * 자주 연습할것 !!!!
+ */
+
+
+//객체(object) --------------------------------------------------
+
+/**
+ * 객체는 중괄호로 작성하고 kye와 값으로 구성된 프로퍼티가 들어간다.
+ * 각 프로퍼티는 쉼표(,)로 구별한다.
+ */
+
+
+// 이 인형의 이름은 쥬쥬이다. 나이는 12살이다.
+
+const doll = { //중괄호 {}
+    name:'juju', // key:vaule(값),
+    age: 12,
+}
+
+//위 객체를 이용하는 방법!!
+
+//생성된 객체에 "접근" 하는 방법!!
+
+doll.name
+doll['age']
+
+/**
+ * 위 코드는 작성된 doll 이라는 객체에 접근하기 위한 코드들이다.
+ * 
+ * 첫번째 doll.name 은 'juju' 라는 값을 출력한다. "객체이름.key" 형태로 작성된다.
+ * 두번째 doll['age']는 12 라는 값을 출력한다. 객체이름['key'] 형태로 작성된다. 
+ */
+
+//생성된 객체에 '추가'하는 방법!
+
+doll.hobby = 'shopping';
+doll['hairColor'] = 'brown';
+
+/**
+ * 위 코드는 doll 객체에 key와 value를 추가하는 코드 입니다.
+ * 
+ * 첫번째 doll.hobby = 'shopping'은 const doll 객체의 중괄호에 hobby:'shopping'을 추가한다.
+ * 두번째 doll[hairColor] = 'brown'은 doll 객체에 hairColor:'brown'을 추가한다. 위와 다른점은 코드 작성 형식이다.
+ * 객체이름[추가하고싶은 key] = 'value값' 형식으로 작성한다.
+ */
+
+//생성된 객체의 프로퍼티를 삭제하는 방법!
+
+delete doll.hairColor;
+
+/**
+ * delete를 삭제하고 싶은 프로퍼티 앞에 붙여주는데 그 형식은 아래와 같습니다.
+ * delete 객체이름.key값;
+ */
+
+
+//Object - 단축 프로퍼티
 
 
 
