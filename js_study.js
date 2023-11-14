@@ -195,44 +195,6 @@ alert(`어서오세요 ${user_name} 공주님`) // 위 alert 코드와 같아보
 const reservation_date = propmt("예약일을 입력해 주세요.","2023-11-11"); //prompt는 두개의 인수를 받을수 있다.
                                                                         //"예약일을 입력해 주세요."와 "2023-11-11"이라는 인수를 통해 prompt창에서 전달하고자 하는 메세지 1번째 인수와 입력창에 나오는 예약어 2번째 인수가 나오게 된다.
 
-/**인수란?
- * 
- * 인수(argument)란 매개변수=인자 (parameter)에 전달 하려는 소괄호 안의 값을 인수라고 한다.
- * 값, 변수, 참조 등 전달 할 수 있다.
- * 
- * 인수(argument) : 함수를 호출할때 건네주는 변수
- * 인자(parameter) : 함수에서 정의되어 함수 내부에서 사용되는 변수, 매개변수,파라미터 라고 많이 불린다.
- * 
- * 
- * 쉽게 말해서 함수를 외부에서 호출할때는 인수(argument), 
- * 함수 내부에서 사용될 경우 인자 (parameter)=매개변수 라고 부른다.
- * 
- * 
- * 예시코드 1번 ▽
- * let num = 3; : 
- * 
- * function add13 (num) {  : add13은 함수 이름 , 그 옆의 괄호는 파라미터가 들어간다.
- * return num + 10
- * }
- * 
- * add13(num)  : add13 함수를 호출하는데 ()안에 위에서 설정된 변수 num을 호출하고 있음
- *               호출된 변수 num이 함수 내부에 설정된 파라미터 (인자,parameter)에 
- *               들어가서 return 에 설정된 식을 실행해서 console에 13이라고 나온다. 
- * 
- * 
- * 
- * 예시코드 2번 ▽
- * let num = 3;
- * 
- * function add13 (num) {
- * return num + 10 //만약 여기 식이 자체적으로 결과값을 나오게 만드는 식이었다면 add13();형식으로 인수(argument)없이 함수호출이 되더라도 값이 나왔을 것이다.
- * }
- * 
- * add13() : 위에서 설정된 add13함수를 호출하긴 하지만 인수(argument)가 없기 때문에 인자를 전달하지 모사고 JS에서는 인자,매개변수(parameter)가 설정되지 않으면 undefined 로 초기화 된다.
- *           따라서 undefined + 10  이 계산되게 되고, 'undefined'는 숫자가 아니므로 NaN(숫자가 아님)이 console창에 호출되게된다.
- * 
- */
-
 
 //confirm() 확인받을때 사용
 
@@ -1517,11 +1479,349 @@ delete doll.hairColor;
 
 //Object - 단축 프로퍼티
 
+const coffee = "americano"
+const latte = "milkform latte"
+
+const cafeMenu = {
+    coffee:coffee,
+    latte:latte,
+    choco:'hotchoco'
+}
+
+/**
+ * 위의 cafeMenu라는 객체를 보면 key값 coffee와 latte는 
+ * 외부에서 선언된 변수 coffee와 latte에서 value를 받아온다.
+ * 
+ * 이 부분을 더 간단하게 작성 할수 있다.
+ */
+
+const coffee2 = "americano"
+const latte2 = "milkform latte"
+
+const cafeMenu2 = {
+    coffee2,
+    latte2,
+    choco:'hotchoco'
+}
+
+/**
+ * 위의 cafeMenu2를 보면 key값의 value값이 외부에서 선언된 변수와 일치하기 때문에
+ * 일치하는 key값만 작성할수 있다. 
+ */
+
+//Object - 프로퍼티(key:value) 존제 여부 확인
+
+const barby = {
+    name:'barby',
+    age:15,
+}
+
+barby.hobby;  //첫번째 방법!
+//undefined
+
+'hobby' in barby; //두번째 방법 (in 연산자)
+//false
+'age' in barby;
+//true
+
+/**
+ * 위의 코드는 선언된 객체 barby의 프로퍼티(key:value)값을 확인하는 것이다.
+ * 
+ * 첫번째 방법 (객체명.key값) 은 객체 내부에 일치하는 프로퍼티가 없으면 undefined를 출력한다.
+ * 
+ * 두번째 방법 (key값 in 객체이름) 은 해당 key값이 있으면 true를 없으면 false를 출력한다.
+ * 
+ */
+
+/**
+ * 언제 in 을 써서 객체의 프로퍼티를 찾을까?
+ * 
+ * 어떤값이 넘어올지 확실할수 없을때 사용하면 된다.
+ * 함수 인자로 받거나 api 통신을 통해 들어 왔을때 사용된다!!!
+ */
+
+
+//for...in 반복문
+
+for(let key in barby) {
+    console.log(key)
+    console.log(barby[key])
+}
+
+/**
+ * for in 반복문 으로 객체의 프로퍼티를 찾는것은 간단하다.
+ */
+
+
+const mimi = {
+    eyeColor:blue,
+    age : 14
+}
+
+console.log(mimi.eyeColor); //mimi객쳋의 프로퍼티 eyeColor:blue가 출력된다.
+console.log(mimi['age']); // console창에 mimi객체의 프로퍼티 age:14가 출력된다.
+
+mimi.hairColor = 'blonde'; //mimi객체에 hairColor:'blonde'가 추가된다.
+mimi[hobby] = 'reading' //mimi객체에 hobby:'reading'이 추가된다.
+delete mimi.age; // mimi객체의 age 프로퍼티가 삭제된다.
+
+console.log(mimi); // const mimi 의 객체가 전부 출력이 된다.
+
+
+//객체
+
+function makeObject (name,age){
+    return {
+        name:name, //name , name:name,은 key는 anme이고 value값은 매개변수에서 내려올 1번째값 name 이기 때문에 'name' 하나만 쓰는것으로 축약이 가능하다. 
+        age:age,   //age , age:age 는 key가 age이고 value값은 매개변수에서 내려올 2번째값 age 이기 때문에 'age'하나로 써도 된다!
+        hobby:'art'
+    }
+}
+
+const Minsu = makeObject('Minsu',20); //위의 makeObject 함수 호출! makeObject 함수 매개변수에 전달할 두개의 인수 Minsu,20 을 가지고 호출한다.
+console.log(Minsu); // 성언된 const 변수 Minsu를 호출한다. 이 Minsu 변수는 함수 makeObject를 호출하는것을 값으로 가지기 때문에 
+                    // makeObject를 호출하면서 인수 Minsu와 20이 makeObject함수 내부에 있는 return 내부의 객체의 value 값에 적용된다.
+                    //Object {key:파라미터값으로 받은 value값들..} 이 console창에 뜨게 된다.
+
+console.log("name" in Minsu); //Minsu 라는 객체에 name이라는 key값이 있는지를 물어보는 것이다. 존제함으로 true값이 출력된다.
+console.log("tall" in Minsu); //Minsu 라는 객체에 tall이라는 key값이 있는지 물어보는 것이다. 없음으로 false이다.
+
+//객체 in
+
+function isAdult (user) {
+    if(user.age < 20) {
+        return false;
+    }
+    return true;
+}
+
+const jully = {
+    name = "jully",
+    age = 20,
+}
+
+const james = {
+    name = "james",
+}
+
+console.log(isAdult(jully)); //true
+console.log(isAdult(james)); //true
+
+/**
+ * 위의 코드에서 james를 isAdult 함수로 호출해서 성인 여부를 확인해본 결과 true가 나왔다.
+ * james는 age key값이 없었고 이는 식별할수 없음(undefined)라고 뜨기 때문에 if문을 통과해서 true에 도달한다.
+ */
+
+
+function isAdult (user) {
+    if(!(age in user)//매개 변수 user의 key값 age이 없거나
+     || //or = 또는, => 둘중에 하나가 맞으면 true로 넘어간다.
+     user.age<20) // 매개변수 user에 key값 age의value값이 20 미만이면 true로 넘긴다.
+      {
+        return false;
+    }
+    return true; //위의 if문 조건문을 쓰는 일반괄호()안의 조건들이 둘다 부합하지 않으면 false임으로 이곳으로 넘어온다.
+}
+
+const judy = {
+    name = "judy",
+    age = 20,
+}
+
+const tom = {
+    name = "tom",
+}
+
+console.log(isAdult(judy)); //true
+console.log(isAdult(tom)); //false
+
+
+/**
+ * 위 코드에서 if문 조건문을 쓰는 일반괄호()안에 or을 뜻하는 ||기호를 사용했다.
+ * 하지만 age in user 의 뜻은" isAdult의 매개변수 user에 age라는 key 값이 있거나"라는 뜻이다.
+ * age in user 에 일반 괄호 ()를 넣어서 (age in user) 을 만들고 그앞에 not을 뜻하는 "!"를 넣어,
+ * !(age in user) = user 매개변수에 age라는 key값이 없다. 는 뜻이 된다.
+ * 
+ * 즉 위의 if(!(age in user) || user.age<20) 은 
+ * !(age in user) = 매개변수 user에 age가 없다.
+ * || = (or) 또는
+ * user.age < 20 = 매개변수 user에 age key의 value 값이 20보다 작으면,
+ * if 문 중괄호 안의 false로 넘어간다는 것이다. (if문 조건문 안의 두 조건중 하나라도 맞다면 true 로 처리가 되서 if문 중괄호로 넘어가기 때문!)
+ * 
+ * if문 일반괄호()안의 모든 조건에 부합하지 않는다면 성인 임으로 if문 아래 작성된 return true로 호출된곳으로 반환된다.
+ * 
+ */
+
+
+//예제! for...in문
+
+const jason = {
+    name: jason,
+    age: 17,
+};
+
+for(key in jason){
+    console.log(jason);//console창에 jason의 key값 들이 출력된다. => "name" , "age"
+    console.log(jason[key]); //jason[name] => jason [age] 순서대로 차례차례 jason이 가지고 있는 key값 순으로 value값을 읽고난뒤,
+                             // console창에 jason이 가지고 있는 key의 value값이 출력된다. => "jason" , 17
+}
 
 
 
+//객체 method/this -------------------------------------------------------------
 
 
+/**
+ * method: 객체 프로퍼티(key:value에서 value값으로 할당된 함수!)로 할당된 함수! 
+ */
+
+const jorgy = {
+    name:" jorgy",
+    age: 21,
+    work: function () {
+        console.log("대학생 입니다.")
+    }
+}
+
+jorgy.work(); //객체 const jorgy의 work라는 key 값을 호출하면, work에 할당된 value값 함수가 실행되면서 console.log("대학생 입니다.")가 실행된다.
+
+/**
+ * 위의 method 예제 구문을 줄여서 작성할수도 있다.
+ * 
+ * const jorgy = {
+ *  name: "jorgy",
+ *  age: 21,
+ *  work() => {
+ *      console.log("대학생  입니다.");
+ * }
+ * 
+ * const jorgy 라는 객체의 프로퍼티에 할당된 함수 => (method = key:function (매개변수) {작동시킬 코드})
+ * 의 형태를 key : function () {} 형태에서,
+ * key (매개변수) => {작동시킬 코드} 형식의 화살표 함수로 바꿀수 있다.
+ * work () => {console.log("대학생 입니다.")} 이런 형태가 그 예시이다.
+ * 
+ * }
+ */
+
+
+//Object !!
+
+const customer = {
+    name : "Minho",
+    saywellcome: function () {
+        console.log(`어서오세요. ${this.name}고객님.`);
+    }
+}
+
+customer.saywellcome(); //"어서오세요. Minho고객님."
+
+/**
+ * 위 예시 코드에서 saywellcome : function () {console.log(`어서오세요. "ㅁㅁㅁ"고객님.`)}
+ * saywellcome 메서드 안에 있는 함수에 있는 console.log(`어서오세요. "ㅁㅁㅁ"고객님.`) 부분의
+ * "ㅁㅁㅁ" 내부에 cutomer 객체 내부의 name:Minho 라는 프로퍼티를 넣고 싶다면?
+ * 
+ * => (`어서오세요. ${this.name}고객님`) 이라고 입력하면 된다. 
+ * 위의 $(this.name)에서 this는 아래에서 호출한 customer.saywellcome()에서
+ * customer을 의미한다. (customer = this)
+ */
+
+
+//▽this 예제 2번
+
+let tommy = {
+    purchased: '스마트폰',
+    buyItem: function () {
+        console.log(`고객님께서는 ${this.purchased}을(를) 구매하셨습니다.`)
+    },
+};
+
+let jenny = {
+    purchased:'화장품',
+    buyItem: function () {
+        console.log(`고객님께서는 ${this.purchased}을(를) 구매하셨습니다.`)
+    },
+}
+
+tommy.buyItem(); // "고객님께서는 스마트폰을(를) 구매하셨습니다."
+jenny.buyItem(); // "고객님께서는 화장품을(를) 구매하셨습니다."
+
+/**
+ * 위의 변수에 buyItem : function () { console.log(`고객님 께서는 ${this.purchased}를 구매하셨습니다.`)}라는 메서드를 입력한뒤
+ * 호출한다면, this는 호출한 순서대로 출력되기에 tommy 객체와 jenny객체 순으로 출력된다.
+ * 호출된 객체이름.buyItem()에서 buyItem이란 메서드를 호출하면 buyItem 메서드 내부에 설정된 코드가 실행되면서
+ * ${this.purchased} this는 호출할 객체의 이름을 뜻하는 것이다. 
+ * 
+ * ex) let jenny = { purchased: "화장품"
+ *                   buyItem: function () {
+ *                       console.log(고객님께서는 ${this.purchased}을(를)구매하셨습니다.)
+ *                   },
+ * 
+ *    위 코드에서 $(this.purchased) 에서 this에 들어갈 것은 해당 메서드가 속한 jenny 객체의 이름이다. 
+ */
+
+
+//※만약 위의 메서드를 함수 선언식이 아닌 화살표 함수로 작성한다면 this의 동작이 달라지게 된다.
+
+/**
+ * 화살표 함수는 일반 함수와 달리 자신만의 this를 가지지 않음!
+ * 화살표 함수 내부에서 this를 사용한다면 "그 this는 외부에서 값을 가져온다."
+ */
+
+//▽ 화살표 함수로 표현한 메서드 와 this의 동작 예제!
+
+let lancome = {
+    price:2000,
+    ment:() => {
+        console.log(`랑콤의 가격은 ${this.price}원 입니다.`); // 화살표 함수에서 this는 전역객체
+    }
+}
+
+lancome.ment();
+//this != lancome , lancome.ment()로 lancome의 매서드 ment를 호출할시에, 해당 메서드 ment안의 this는 lancome이 아니다.
+
+/**
+ * 환경에 따른 전역객체의 의미!!!!!
+ * window:browser
+ * node: global
+ */
+
+
+// 이해를 위한 예제 문제들!!!!!
+
+let bird = {
+    name: swan,
+    showFly: function () {
+        console.log(`${bird.name}의 날갯짓은 파닥파닥!`);
+    }
+};
+
+let animal = bird; //animal 변수에 bird라는 객체를 값으로 할당한다.
+                   //bird로도 animal로도 해당 객체에 접근 가능하다!
+
+animal.name = "Sparrow"; //객체 bird가 할당된 let animal변수에서 name이라는 프로퍼티의 value값을 "swan"에서 "Sparrow"로 바꾸면,
+console.log(bird.name); //객체 bird의 프로퍼티의 vaule값이 "Sparrow"로 바뀌어서 출력된다.
+
+animal.showFly(); //bird 객체가 할당된 animal변수를 이용해 showFly 매서드(method)를 호출하면 "Sparrow의 날갯짓은 파닥파닥!" 이라고 출력된다.
+bird = null; //객체 bird를 null(아무것도 할당된게 없음) 으로 바꿔주면?
+
+animal.showFly(); //animal 변수를 이용해 showFly 메서드를 호출해주면 console창에 showFly매서드를 찾을수 없다고 나온다.
+
+/**
+ * 하지만 위의 bird 변수의 showFly 메서드에서 ${bird.name}을 ${this.name}으로 변경한뒤
+ * bird=null;
+ * animal.shoFly();를 호출해 주면 "Sparrow의 날갯짓은 파닥파닥!" 이라는 문구가 출력된다.
+ */
+
+//▽객체의 매서드를 화살표 함수로 표현해주기!!! 예제코드!!!
+
+let cat = {
+    name: "냐옹이",
+    sayCall:function () {
+        console.log(this);
+    }
+}
+
+cat.sayCall();
 
 
 
