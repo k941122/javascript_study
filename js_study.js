@@ -1931,7 +1931,88 @@ smartPhone.length //30이라고 출력 0~29
 
 let menu = ['아메리카노','라떼','아인슈페너'];
 
-menu.push('스무디');//위 menu 배열에 일반괄호 안의'스무디'를 push(추가) 해준다.
+menu.push('스무디');//위 menu 배열에 일반괄호 안의'스무디'를 menu배열의 끝에 push(추가) 해준다.
 console.log(menu); // ['아메리카노','라떼','아인슈페너','스무디'] 라는 menu의 배열이 출력
+
+
+//"pop();" : 배열의 끝 요소 제거!---------------------------------------------------
+
+let vegetable = ["상추","시금치","사과"];
+vegetable.pop(); //배열이름.pop(); : 배열의 마지막 요소를 제거해 주는 pop 메소드의 사용 형식이다.
+console.log(vegetable); //["상추","시금치"] => vegetable 배열(Array)의 마지막 요소인 "사과"가 제거 되었다.
+
+//shift,unshift : 배열 앞에 요소 제거/추가
+
+//unshift = 배열 앞에 요소 추가하기!
+
+vegetable.unshift("순무","샐러리","당근"); //unshift 매서드를 이용해 배열에 요소를 추가 할수 있으며, 많은 갯수의 요소를 한꺼번에 추가할수 있다.
+console.log(vegetable); //["순무","샐러리","당근","상추","시금치","사과"]; : "배일이름.unshif("요소","요소","요소");"형식을 통해 배열의 앞에 일반괄호()안에 작성한 요소들을 추가했다.
+
+
+//shift = 배열 앞에 요소 제거하기!
+
+vegetable.shift(); // "배열이름.shift();" 형식은 shift배열을 이용해 배열의 요소를 제거하는 형식이다. 
+console.log(vegetable); //["상추","시금치","사과"]; 위의 shift의 일반괄호()안에 있는 세가지 요소가 제거 되었다.
+
+
+//반복문 : for
+
+//let vegetable = ["상추","시금치","사과"]; 
+//▼ 위의 vegetable 배열을 이용하여 for 반복문을 작성 할때의 예제!
+
+for(let index = 0;index < vegetable.length;index++) {
+    console.log(vegetble[index]); //0~2까지 반복
+}
+
+/**
+ * for반복문 조건을 작성하는 일반괄호()안에 초기값 = "let index = 0;"  배열의 값을 0으로 설정하고, 2번째 부분 (조건)을 배열 vegetable의 길이(length) 보다 작다 라고 입력한뒤 index++ 를 입력한 것이다.
+ * 1, 위 for 반복문을 이용한 배열 출력은 초기값 index는 0임으로 
+ * 2. 두번재인 조건에 들어가고 아래의 console.log를 실행 시킨다.
+ * 3. console.log 코드실행이 끝나면 해당 값은 다시 index++로 들어가 증감연산자를 통해 1이 더해진다.
+ * 4. 이 1이 더해진 index는 다시 2번재로 돌아간다.
+ * 5. 이 과정이 2번째 조건에 일치하지 않을때 까지 반복한다.
+ * 
+ * 최종적으로 console창에 ["상추","시금치","사과"]가 출력된다.
+ */
+
+
+//반복문 for...of
+
+//let vegetable = ["상추","시금치","사과"]; 
+//▼ 위의 vegetable 배열을 이용하여 for...of 반복문을 작성 할때의 예제!
+
+for(let vegetables of vegetable) {
+    console.log(vegetables);
+}
+
+/**
+ * 배열 vegetable의 요소를 돌면서 let vevgetable 이라는 이름으로 접근할수 있다!!
+ * for문 보다는 간단하지만 index를 못 얻는다.
+ */
+
+let days = ["mon","tue","wen"];
+console.log(days[1]); //days의 2번재 요소인 tue가 출력!
+
+days[1] = "불타는 화요일";//days의 2번째 요소 바꾸기 => ["mon","불타는 화요일","wen"] 이라고 출력
+
+console.log(days.length); // 3이 출력, 배열이름.length 는 해당배열의 갯수를 출력하는 매서드
+
+days.push("목요일"); //days배열 제일 뒤에 "목요일" 요소 추가.
+days.unshift("sunday"); // days배열 제일 앞에 "sunday" 요소 추가. 
+
+for(let index = 0; index < days.length; index++) {
+    console.log(days[index]); //위의 for문을 통해 days의 요소(index)가 차례대로 출력된다.
+}
+
+for(let day  of days) {
+    console.log(day); // days의 요소(index)가 차례대로 출력된다.
+}
+
+/**※for(let day of days) {console.log(day);} 에서 "day"는 배열의 요소 (index)임으로 아물 이름이나 써도 된다.
+ *   ex) for(let x of days) {console.log(x);} 같은 형식으로!!!
+*/
+
+
+
 
 
